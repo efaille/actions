@@ -3,7 +3,9 @@ inputs:
   version:
     required: false
     default: .
-  author:
+  author-email:
+    required: true
+  author-name:
     required: true
   commit-message:
     required: false
@@ -17,10 +19,11 @@ runs:
       run: |
         helm package .
         helm repo index ${{ inputs.version }}
-        ls
+        git config --global user.email "${{ inputs.author-email }}"
+        git config --global user.name "${{ inputs.author-name }}"
         git add .
         git status
-        git commit --author "${{ inputs.author }}" -m "${{ inputs.commit-message }}"
+        git commit -m "${{ inputs.commit-message }}"
         git push
     # git config --global user.email "yourbot@yourorg.com"
     # git config --global user.name "YourOrg Bot"
