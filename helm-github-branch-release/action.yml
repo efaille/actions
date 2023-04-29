@@ -18,7 +18,8 @@ runs:
         helm package .
         helm repo index ${{ inputs.version }}
         ls
-    #    git add index.yaml
+        git add .
+        git status
     #    git commit -m "${{ inputs.commit-message }}"
     #    git push
         # git config --global user.email "yourbot@yourorg.com"
