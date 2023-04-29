@@ -17,6 +17,7 @@ runs:
       run: |
         helm package .
         helm repo index ${{ inputs.version }}
+        ls
     #    git add index.yaml
     #    git commit -m "${{ inputs.commit-message }}"
     #    git push
