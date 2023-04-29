@@ -15,6 +15,7 @@ runs:
     - uses: azure/setup-helm@v3
     - shell: bash
       run: |
+        helm package .
         helm repo index ${{ inputs.version }}
     #    git add index.yaml
     #    git commit -m "${{ inputs.commit-message }}"
