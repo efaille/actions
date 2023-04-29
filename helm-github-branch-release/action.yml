@@ -20,7 +20,7 @@ runs:
         ls
         git add .
         git status
-        git commit -m "${{ inputs.commit-message }}"
+        git commit --author "${{ inputs.author }}" -m "${{ inputs.commit-message }}"
         git push
     # git config --global user.email "yourbot@yourorg.com"
     # git config --global user.name "YourOrg Bot"
