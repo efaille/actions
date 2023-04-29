@@ -16,8 +16,8 @@ runs:
     - shell: bash
       run: |
         helm repo index ${{ inputs.version }}
-        git add index.yaml
-        git commit -m "${{ inputs.commit-message }}"
+    #    git add index.yaml
+    #    git commit -m "${{ inputs.commit-message }}"
     #    git push
         # git config --global user.email "yourbot@yourorg.com"
         # git config --global user.name "YourOrg Bot"
