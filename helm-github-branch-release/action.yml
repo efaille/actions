@@ -1,0 +1,23 @@
+name: "helm-github-branch-release"
+inputs:
+  version:
+    required: false
+    default: .
+  author:
+    required: true
+  commit-message:
+    required: false
+    default: release and update index
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v3
+    - uses: azure/setup-helm@v3
+    - shell: bash
+      run: |
+        helm repo index ${{ inputs.version }}
+        git add index.yaml
+        git commit -m "${{ inputs.commit-message }}"
+    #    git push
+        # git config --global user.email "yourbot@yourorg.com"
+        # git config --global user.name "YourOrg Bot"
