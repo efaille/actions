@@ -21,9 +21,7 @@ runs:
         helm repo index ${{ inputs.version }}
         git config --global user.email "${{ inputs.author-email }}"
         git config --global user.name "${{ inputs.author-name }}"
-        git add .
-        git status
-        git commit -m "${{ inputs.commit-message }}"
+        git commit -am "${{ inputs.commit-message }}"
         git push
     # git config --global user.email "yourbot@yourorg.com"
     # git config --global user.name "YourOrg Bot"
