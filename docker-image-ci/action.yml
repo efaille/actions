@@ -22,8 +22,12 @@ runs:
         registry: ${{ inputs.registry }}
         username: ${{ inputs.username }}
         password: ${{ inputs.password }}
-    - uses: docker/build-push-action@v3
-      with:
-        context: ${{ inputs.context }}
-        push: true
-        tags: ${{ inputs.registry }}/${{ inputs.tag }}
+    - name: Build Docker image
+      shell: bash
+      run: docker build ${{ inputs.context }} --tag ${{ inputs.registry }}/${{ inputs.tag }}
+    - name: Run Docker Compose test file if present
+      shell: bash
+      run: docker compose ...
+    - name: Push Docker image
+      shell: bash
+      run: docker push ${{ inputs.registry }}/${{ inputs.tag }}
